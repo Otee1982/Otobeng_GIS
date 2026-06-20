@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otobong Udosen | GIS & Data Analytics Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-dark: #1a1a1a;
+            --background-light: #2c2c2c;
+            --text-light: #e0e0e0;
+            --text-dark: #a0a0a0;
+            --accent-neon-teal: #00bcd4; /* Cyan-like, vibrant */
+            --accent-emerald-green: #00e676; /* Bright green */
+            --accent-amber: #ffc107; /* Gold/Amber */
+            --border-color: #444;
+            --spacing-unit: 1rem;
+            --max-width: 1200px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-neon-teal);
+            margin-top: calc(var(--spacing-unit) * 3);
+            margin-bottom: var(--spacing-unit);
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: var(--text-light);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: var(--spacing-unit);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--accent-emerald-green);
+        }
+
+        p {
+            margin-bottom: var(--spacing-unit);
+        }
+
+        a {
+            color: var(--accent-neon-teal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-emerald-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--background-light);
+            padding: calc(var(--spacing-unit) * 5) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,188,212,0.1) 0%, rgba(0,230,118,0.1) 100%);
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            margin: 0 auto calc(var(--spacing-unit) * 2);
+            border: 3px solid var(--accent-neon-teal);
+            overflow: hidden;
+        }
+
+        .profile-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            margin-bottom: calc(var(--spacing-unit) / 2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            color: var(--accent-emerald-green);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .hero .value-statement {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto calc(var(--spacing-unit) * 2);
+            color: var(--text-dark);
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 var(--spacing-unit);
+            font-size: 1.2rem;
+            color: var(--text-light);
+            border: 1px solid var(--accent-neon-teal);
+            padding: calc(var(--spacing-unit) / 2) var(--spacing-unit);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-neon-teal);
+            color: var(--background-dark);
+            border-color: var(--accent-neon-teal);
+        }
+
+        /* Expertise Matrix */
+        .expertise-matrix {
+            padding: calc(var(--spacing-unit) * 4) 0;
+            background-color: var(--background-dark);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: calc(var(--spacing-unit) * 2);
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+
+        .expertise-item {
+            background-color: var(--background-light);
+            padding: calc(var(--spacing-unit) * 1.5);
+            border-left: 3px solid var(--accent-emerald-green);
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .expertise-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .expertise-item h4 {
+            color: var(--accent-neon-teal);
+            margin-top: 0;
+            margin-bottom: var(--spacing-unit);
+            font-size: 1.3rem;
+        }
+
+        .expertise-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .expertise-item ul li {
+            margin-bottom: calc(var(--spacing-unit) / 2);
+            color: var(--text-dark);
+        }
+
+        /* Work Showcase */
+        .work-showcase {
+            padding: calc(var(--spacing-unit) * 4) 0;
+            background-color: var(--background-light);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(var(--spacing-unit) * 4);
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+
+        .project-item {
+            background-color: var(--background-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .project-content {
+            padding: calc(var(--spacing-unit) * 2);
+        }
+
+        .project-content h3 {
+            margin-top: 0;
+            color: var(--accent-amber);
+        }
+
+        .project-content p {
+            color: var(--text-dark);
+        }
+
+        /* Experience & Education */
+        .experience-education {
+            padding: calc(var(--spacing-unit) * 4) 0;
+            background-color: var(--background-dark);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 2) 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: var(--spacing-unit) calc(var(--spacing-unit) * 3);
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--background-light);
+            border: 4px solid var(--accent-neon-teal);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item-left {
+            left: 0;
+        }
+
+        .timeline-item-right {
+            left: 50%;
+        }
+
+        .timeline-item-left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--background-light);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--background-light);
+        }
+
+        .timeline-item-right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--background-light);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--background-light) transparent transparent;
+        }
+
+        .timeline-item-right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: calc(var(--spacing-unit) * 1.5);
+            background-color: var(--background-light);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h4 {
+            color: var(--accent-emerald-green);
+            margin-top: 0;
+            margin-bottom: calc(var(--spacing-unit) / 2);
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        /* Call to Action / Footer */
+        .footer {
+            background-color: var(--background-light);
+            padding: calc(var(--spacing-unit) * 3) 0;
+            text-align: center;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .footer p {
+            margin-bottom: var(--spacing-unit);
+            color: var(--text-dark);
+        }
+
+        .footer .social-links a {
+            border-color: var(--accent-emerald-green);
+        }
+
+        .footer .social-links a:hover {
+            background-color: var(--accent-emerald-green);
+            border-color: var(--accent-emerald-green);
+        }
+
+        /* Responsive Adjustments */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: calc(var(--spacing-unit) * 4);
+                padding-right: var(--spacing-unit);
+            }
+
+            .timeline-item-left::before,
+            .timeline-item-right::before {
+                left: 60px;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--background-light) transparent transparent;
+            }
+
+            .timeline-item-left::after,
+            .timeline-item-right::after {
+                left: 15px;
+            }
+
+            .timeline-item-right {
+                left: 0%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: var(--spacing-unit);
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .social-links a {
+                margin: 0 calc(var(--spacing-unit) / 2);
+                padding: calc(var(--spacing-unit) / 4) calc(var(--spacing-unit) / 2);
+                font-size: 1rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <div class="profile-image-placeholder">
+                <img src="profile.jpg" alt="Otobong Udosen Profile Picture">
+            </div>
+            <h1>Otobong Udosen</h1>
+            <p class="subtitle">Data Analytics + Geospatial Intelligence</p>
+            <p class="value-statement">
+                Leveraging robust analytical skills and spatial methodologies to transform complex data into actionable insights.
+                A dedicated professional at the intersection of public health, institutional research, and advanced geospatial analysis.
+            </p>
+            <div class="social-links">
+                <a href="http://linkedin.com/in/otobong-udosen-b4a912104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:oudos001@odu.edu">Email</a>
+                <!-- Add GitHub link if available -->
+            </div>
+        </div>
+    </header>
+
+    <section class="expertise-matrix">
+        <div class="container">
+            <h2>The Hybrid Edge: Intersecting Data & Geospatial Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <h4>Data Analytics Core</h4>
+                    <ul>
+                        <li>SAS, SPSS, Tableau, Power BI, Excel</li>
+                        <li>Data Cleaning, Recoding, & Merging</li>
+                        <li>Research & Statistical Methods</li>
+                        <li>Report Writing & Visualization</li>
+                    </ul>
+                </div>
+                <div class="expertise-item">
+                    <h4>Geospatial Intelligence</h4>
+                    <ul>
+                        <li>QGIS (Spatial ETL, Analysis, Cartography)</li>
+                        <li>Spatial Data Modeling & Visualization</li>
+                        <li>Remote Sensing Fundamentals</li>
+                        <li>Geographic Database Management</li>
+                    </ul>
+                </div>
+                <div class="expertise-item">
+                    <h4>Domain & Soft Skills</h4>
+                    <ul>
+                        <li>Public Health & Institutional Research</li>
+                        <li>Qualitative & Quantitative Analysis</li>
+                        <li>Problem-Solving & Attention to Detail</li>
+                        <li>Strong Communication & Teamwork</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="work-showcase">
+        <div class="container">
+            <h2>Selected Work: GIS & Analytics Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <img src="images/qgis-map1.png" alt="Food Deserts and Diabetes in Baltimore Map">
+                    <div class="project-content">
+                        <h3>Food Deserts and Diabetes in Baltimore: A Spatial Equity Analysis</h3>
+                        <p><strong>The Problem:</strong> Investigating the spatial correlation between food desert locations and diabetes prevalence within Baltimore, highlighting areas of critical public health concern.</p>
+                        <p><strong>The Spatial Methodology:</strong> Utilized QGIS for multi-layer vector overlay analysis, integrating Baltimore city boundaries, neighborhood polygons, and point data for dialysis centers. Employed choropleth symbology to visualize diabetes prevalence across neighborhoods, identifying underserved areas with limited access to healthy food options.</p>
+                        <p><strong>The Insight/Result:</strong> This analysis revealed significant spatial disparities, pinpointing specific neighborhoods where residents face compounded challenges of food insecurity and higher diabetes rates, informing targeted public health interventions.</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="images/qgis-map2.png" alt="Suitable Sites For Stowe Ski Resort Map">
+                    <div class="project-content">
+                        <h3>Optimal Site Selection for Stowe Ski Resort Expansion: A Terrain Suitability Model</h3>
+                        <p><strong>The Problem:</strong> Identifying geomorphologically suitable land parcels for potential ski resort development or expansion, considering elevation, slope, and existing infrastructure.</p>
+                        <p><strong>The Spatial Methodology:</strong> Performed advanced terrain analysis in QGIS using high-resolution Digital Elevation Models (DEMs). Derived contour lines and slope maps, then applied multi-criteria evaluation to delineate areas meeting specific elevation ranges and gradient requirements for ski runs. Vector overlays were used to exclude unsuitable zones.</p>
+                        <p><strong>The Insight/Result:</strong> The model successfully identified and visualized prime candidate sites for ski resort infrastructure, optimizing for natural terrain advantages and minimizing environmental impact, providing data-driven recommendations for strategic planning.</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="images/qgis-map3.png" alt="Population of Reunion 2019 Map">
+                    <div class="project-content">
+                        <h3>Demographic Cartography of Réunion Island (2019): Population Distribution & Density</h3>
+                        <p><strong>The Problem:</strong> Visualizing and analyzing the 2019 population distribution and density across the municipalities of Réunion Island to understand demographic patterns and regional disparities.</p>
+                        <p><strong>The Spatial Methodology:</strong> Developed a comprehensive cartographic dashboard using QGIS, featuring a municipal choropleth map symbolizing population counts. Integrated supplementary data visualizations, including bar charts for EPCI (Établissements Publics de Coopération Intercommunale) population and pie charts for population density, to provide a multi-faceted demographic overview.</p>
+                        <p><strong>The Insight/Result:</strong> This project delivered an intuitive and informative visual summary of Réunion's demographic landscape, enabling quick identification of densely populated urban centers versus more rural areas, crucial for regional planning and resource allocation.</p>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <img src="images/qgis-map4.png" alt="Greater Sage-grouse Current Distribution Map">
+                    <div class="project-content">
+                        <h3>Greater Sage-grouse Habitat & Federal Land Ownership: A Biogeographic Analysis</h3>
+                        <p><strong>The Problem:</strong> Mapping the current distribution of the Greater Sage-grouse across the Western United States and its intersection with various federal land management jurisdictions.</p>
+                        <p><strong>The Spatial Methodology:</strong> Executed a large-scale spatial overlay analysis in QGIS, integrating sage-grouse habitat polygons with federal land ownership data from the National Atlas and USFWS. The map categorizes land managed by the BLM, Forest Service, National Park Service, and other agencies, highlighting the multi-jurisdictional nature of habitat conservation.</p>
+                        <p><strong>The Insight/Result:</strong> This biogeographic visualization provides a critical overview of habitat fragmentation and the shared responsibility of federal agencies in protecting sage-grouse populations, supporting collaborative conservation planning and policy development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience-education">
+        <div class="container">
+            <h2>Professional Journey & Academic Foundations</h2>
+            <div class="timeline">
+                <div class="timeline-item timeline-item-right">
+                    <div class="timeline-content">
+                        <h4>Institutional Research | Research Associate</h4>
+                        <p><strong>Old Dominion University</strong> | 2025 – Present</p>
+                        <ul>
+                            <li>Analyzed institutional datasets using SAS, Excel, and Power BI.</li>
+                            <li>Built dashboards and analytical reports for leadership decision-making.</li>
+                            <li>Integrated multi-source data and ensured data quality for reporting.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-left">
+                    <div class="timeline-content">
+                        <h4>Graduate Administrative Assistant</h4>
+                        <p><strong>Old Dominion University, Academic Affairs Administration</strong> | 2023 – 2025</p>
+                        <ul>
+                            <li>Created visual representations of data (charts, graphs, dashboards) to communicate findings effectively.</li>
+                            <li>Assisted with organizing files and maintaining faculty records using Excel.</li>
+                            <li>Managed office supplies, filing systems, and ensured smooth department operation.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-right">
+                    <div class="timeline-content">
+                        <h4>Master of Public Health</h4>
+                        <p><strong>Old Dominion University</strong> | 2023 – 2025</p>
+                        <p>Focused on advanced statistical methods and data-driven public health interventions.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-left">
+                    <div class="timeline-content">
+                        <h4>Master of Safety, Health and Environment</h4>
+                        <p><strong>University of Ibadan</strong> | 2018 – 2021</p>
+                        <p>Specialized in environmental health and safety management, integrating data for risk assessment.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-right">
+                    <div class="timeline-content">
+                        <h4>Bachelor of Science, Microbiology</h4>
+                        <p><strong>University of Calabar</strong> | 2010 – 2015</p>
+                        <p>Developed foundational scientific research and analytical skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h2>Connect & Collaborate</h2>
+            <p>I am always open to discussing new projects, collaborations, or opportunities in data analytics and geospatial intelligence.</p>
+            <div class="social-links">
+                <a href="http://linkedin.com/in/otobong-udosen-b4a912104" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:oudos001@odu.edu">Email</a>
+                <!-- Add GitHub link if available -->
+            </div>
+            <p style="margin-top: calc(var(--spacing-unit) * 2); font-size: 0.85rem;">&copy; 2026 Otobong Udosen. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
